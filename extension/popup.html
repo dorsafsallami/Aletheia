@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icon.png" type="image/png"> <!-- Icon for browser tab -->
+
+    <title>Aletheia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<body>
+    <div class="app-container">
+        <header>
+            <img src="icon.png" alt="Logo" class="icon"> 
+            <h1>Aletheia</h1>
+        </header>
+
+        <nav class="nav nav-tabs">
+            <button id="detection-tab" class="tab active btn  mx-2">Verify It</button>
+            <button id="community-tab" class="tab btn  mx-2">Discussion Hub</button>
+            <button id="learning-tab" class="tab btn  mx-2">Stay Informed</button>
+        </nav>
+        
+
+        <main>
+            <!-- Detection Section
+            <section id="detection-section" class="section active">
+                <textarea id="newsInput" placeholder="Paste news article here"></textarea>
+                <button id="detectButton" class="btn">Detect Fake News</button>
+                <div id="result" class="result"></div>
+            </section> -->
+            
+            <!-- Detection Section -->
+            <section id="detection-section" class="section active">
+                 <textarea id="newsInput" placeholder="Paste news here"></textarea>
+                 <button id="detectButton" class="btnd">Detect</button>
+                 <div id="result" class="result"></div>
+                 <div id="confidence" class="confidence"></div>
+                 <!-- Add explanation section -->
+                 <button id="explanationButton" class="btnd" style="display: none;">Show Explanation</button>
+                 <div id="explanation" class="explanation"></div>
+                 </section>
+
+            <!-- Community Section -->
+            <section id="community-section" class="section hidden">
+                <!--<h2>Community Posts</h2>-->
+            
+                <!-- Posts Container -->
+                <div id="posts">
+                    <!-- Posts will be dynamically inserted here -->
+                </div>
+            
+                <!-- New Post Input -->
+                <textarea id="newPost" placeholder="Write a new post..."></textarea>
+                <button id="postButton" class="btnd">Post</button>
+            </section>
+
+
+            <!-- Learning Section -->
+            <section id="learning-section" class="section hidden">
+                <!--<h2>Recent Fact-Checking Results</h2>-->
+                 <!-- <p>Explore the latest fact-checks and learn about verified claims to stay informed.</p> -->
+                <div class="carousel-container">
+                    <button id="prev-button" class="carousel-arrow left-arrow">&#10094;</button>
+                    <ul id="fact-check-list">
+                        <!-- Fact-check results will be appended here -->
+                    </ul>
+                    <button id="next-button" class="carousel-arrow right-arrow">&#10095;</button>
+                </div>
+            </section>
+            
+            
+            
+            
+        </main>
+
+        <footer style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 20px;">
+            <p style="margin: 0;">&copy; 2025 Aletheia</p>
+            <span class="info-icon">
+                <i class="fas fa-info-circle" style="color: #8A1626; font-size: 18px;"></i>
+                <span class="tooltip">Alethia empowers users to combat fake news by combining cutting-edge AI with community-driven insights. We provide transparent, evidence-based analysis of online content and foster informed discussions to promote digital literacy.</span>
+            </span>
+        </footer>
+    </div>
+    <!-- Make sure jQuery is loaded first -->
+
+
+<script src="/static/js/jquery-3.6.0.min.js"></script>
+
+<!-- Your custom script should come after jQuery -->
+<script src="popup.js"></script>
+<script>
+    document.querySelector('.info-icon').addEventListener('click', function() {
+        let tooltip = this.querySelector('.tooltip');
+        tooltip.style.visibility = tooltip.style.visibility === 'visible' ? 'hidden' : 'visible';
+        tooltip.style.opacity = tooltip.style.opacity === '1' ? '0' : '1';
+    });
+</script>
+</body>
+</html>

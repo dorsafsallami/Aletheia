@@ -1,0 +1,932 @@
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Font and Colors */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+}
+
+.app-container {
+    width: 400px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* ******************************************* Header Styling ***************************** */
+header {
+    display: flex;
+    align-items: center; /* Vertically center the items */
+    padding: 10px 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    background-color: #f8f8f8;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.icon {
+    width: 70px; /* Adjust the width of the icon */
+    height: 70px; /* Ensure the height matches the width */
+    margin-right: 10px; /* Space between the icon and the title */
+    display: inline-block; /* Treat the image as an inline-block element */
+    vertical-align: middle; /* Vertically align the icon with the text */
+}
+
+h1 {
+    margin: 0; /* Remove default margin */
+    line-height: 1; /* Ensure consistent line height */
+    display: inline-block; /* Ensure the title behaves like an inline element */
+    font-size: 2rem;
+    color: #8A1626;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    margin: 0; /* Remove margin around the heading */
+    font-family: 'Merriweather', serif;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    line-height: 60px; /* Match the line height of the icon */
+}
+
+
+/* ************************* footer *************************** */
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+    color: black;
+}
+
+.info-icon {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 200px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 8px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.info-icon:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+/* Tabs Navigation */
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    border-radius: 15px 15px 0 0; /* Apply rounded top corners to nav */
+    overflow: hidden; /* Ensure no overflow from the rounded corners */
+}
+
+/* Base style for all tabs */
+.tab {
+    flex: 1; /* Each tab takes up equal space */
+    text-align: center;
+    padding: 10px;
+    border: none;
+    background: #e9ecef; /* Light gray background for inactive tabs */
+    color: #8A1626; /* Red color for inactive tabs */
+    cursor: pointer;
+    transition: all 0.3s; /* Smooth transition for hover and active states */
+    border-radius: 15px 15px 0 0; /* Rounded top corners for individual tabs */
+}
+
+/* Style for active tab */
+.tab.active {
+    background: #8A1626; /* Dark red background for active tab */
+    color: #fff; /* White text for active tab */
+}
+
+/* Hover effect for tabs */
+.tab:hover {
+    background: #f1f1f1; /* Light background on hover */
+    color: #8A1626; /* Red text on hover */
+}
+
+/* Optional: Adjust the active tab's hover style so it doesn't change */
+.tab.active:hover {
+    background: #8A1626; /* Keep the active tab's red background on hover */
+    color: #fff; /* Keep the white text on active tab hover */
+}
+
+/* Content Sections */
+.content-section {
+    display: none; /* Hide all sections by default */
+    padding: 20px;
+    border: 2px solid #8A1626; /* Red border around the content area */
+    margin-top: -1px;
+    border-radius: 10px; /* Rounded corners for content sections */
+}
+
+.content-section.active {
+    display: block;
+}
+
+/* Optional: Add a shadow around the active content section */
+.content-section.active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for active section */
+}
+
+
+
+
+/* ************************************************ end enhancement *****************
+
+/* Main Content */
+main {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#detection-section {
+    font-family: 'Lato', sans-serif;
+    margin: 20px auto;
+    max-width: 900px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.section {
+    flex: 1;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin: 0 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section.active {
+    display: flex;
+}
+
+textarea {
+    width: 100%;
+    height: 100px; /* Increased height for more space */
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: none;
+    background-color: #f9f9f9; /* Soft background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: all 0.3s ease-in-out; /* Smooth transition for interaction */
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #8A1626; /* Red border for focus */
+    box-shadow: 0 4px 12px rgba(138, 22, 38, 0.3); /* Highlighted shadow on focus */
+    background-color: #fff; /* Slightly change background color on focus */
+}
+
+
+/* Button Styling with Increased Specificity */
+.btnd { 
+    padding: 8px 20px;  /* Adjust padding to make button compact */
+    background-color: #8A1626;  /* Ensure correct background color */
+    color: white;  /* Change text color to white for contrast */
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-block;  /* Makes the button adjust to its content */
+    text-align: center;  /* Ensures the text is centered */
+    margin: 0 auto;  /* Ensures the button is centered in its container */
+    box-sizing: border-box;  /* Makes sure padding doesn't mess with size */
+    width: auto;  /* Ensure button width is just enough for content */
+    transition: background 0.3s;
+}
+
+.btnd:hover {
+    background-color: #8A1626;  /* Keeps background same on hover */
+}
+
+
+.result {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background: white;
+    font-weight: bold;
+    color: black;
+    width: 100%;
+    text-align: center;
+}
+
+.confidence {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background: white;
+    font-weight: bold;
+    color: black;
+    width: 100%;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #888;
+}
+main {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.section {
+    flex: 1;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin: 0 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section.active {
+    display: flex;
+}
+/* Posts Container */
+#community-section {
+    font-family: 'Lato', sans-serif;
+    margin: 10px auto;
+    max-width: 900px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+#posts {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+
+.post-content {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* Voting System */
+.post-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+}
+
+/* ************************* voting *************************** */
+
+/* Updated button styling to remove square background */
+.upvote-btn, .downvote-btn {
+    background: none; /* No background color */
+    color: #8A1626; /* Red color for the icon */
+    border: none; /* Remove the border */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.5rem; /* Icon size */
+    padding: 0; /* Remove padding around the icon */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Hover effect for icons */
+.upvote-btn:hover, .downvote-btn:hover {
+    color: #990000; /* Darker red when hovered */
+}
+
+/* Vote count display next to the icons */
+.vote-count {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    /*margin-left: 5px;  Space between the icon and the count */
+}
+
+/* Disabled buttons style */
+.upvote-btn:disabled, .downvote-btn:disabled {
+    color: #666666; /* Grey the icons out */
+    cursor: not-allowed;
+}
+
+
+/* ***************************************** Comments Section *********************** */
+.comments {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.comment-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.comment-list li {
+    margin-bottom: 5px;
+}
+
+.comment-input {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 5px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 0.9rem;
+}
+
+.add-comment-btn {
+    background: #8A1626;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.add-comment-btn:hover {
+    background: #8A1626;
+}
+.post-controls button {
+    cursor: pointer;
+}
+.verified {
+    color: green;
+    font-weight: bold;
+}
+
+.not-verified {
+    color: red;
+    font-weight: bold;
+}
+/* Container for each post */
+.post {
+    background: #f9f9f9; /* Light gray background */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 16px;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* Post content */
+.post p {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+/* Post controls (upvote, downvote, votes, verified status) */
+.post-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Vote buttons */
+.post-controls button {
+    background: #8A1626; /* Blue background */
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.post-controls button:hover {
+    background: #8A1626; /* Darker blue on hover */
+}
+
+/* Vote count */
+.post-controls span.vote-count {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Verified status */
+.verified {
+    color: #28a745; /* Green */
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.not-verified {
+    color: #dc3545; /* Red */
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* Comments section */
+.post ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.post ul li {
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    color: #555;
+}
+
+/* Comment input */
+.post textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    resize: none;
+    font-family: 'Arial', sans-serif;
+}
+
+
+/* Style for vote buttons and counts */
+.post-controls button {
+    background: #8A1626    ; /* Blue background */
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 5px; /* Space between button and count */
+    transition: background 0.3s ease;
+}
+
+.post-controls button:hover {
+    background: #8A1626; /* Darker blue on hover */
+}
+
+.post-controls .vote-count {
+    font-size: 14px;
+    color: #333;
+    margin-right: 15px; /* Space between vote count and the next button */
+    font-weight: bold;
+}
+/* Container for each comment */
+.comment-item {
+    background: #f9f9f9; /* Light background for comments */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 6px; /* Rounded corners */
+    padding: 10px; /* Padding inside the comment box */
+    margin-bottom: 10px; /* Space between comments */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    font-size: 14px; /* Font size for comments */
+    color: #333; /* Text color */
+    font-family: 'Arial', sans-serif; /* Clean font for comments */
+}
+.add-comment {
+    background-color: #8A1626    ; /* Match blue color of vote buttons */
+    color: white; /* White text */
+    font-size: 14px; /* Font size */
+    font-weight: bold; /* Bold text */
+    padding: 10px 15px; /* Padding for the button */
+    border: none; /* Remove border */
+    border-radius: 6px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.add-comment:hover {
+    background-color: #8A1626; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight zoom-in effect */
+}
+
+.add-comment:active {
+    background-color: #8A1626; /* Even darker blue on click */
+    transform: scale(0.95); /* Slight shrink effect */
+}
+
+.verification-status {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between icon and text */
+    font-size: 14px;
+    margin-left: 10px; /* Space from other elements */
+}
+
+.verified-icon,
+.verified-icon + span { /* Apply the same color to the icon and adjacent text */
+    color: #28a745; /* Green for Verified */
+}
+
+.not-verified-icon,
+.not-verified-icon + span {
+    color: #dc3545; /* Red for Not Verified */
+}
+
+.pending-icon,
+.pending-icon + span {
+    color: #ffc107; /* Yellow for Pending Verification */
+}
+/* General Badge Styling */
+/* Badge styles */
+/* General Badge Styling */
+/* Container for each post */
+.post {
+    position: relative; /* Enable positioning for the badge */
+    background: #f9f9f9; /* Light gray background */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 16px;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* Badge Positioning */
+.badge {
+    position: absolute; /* Place it relative to the post */
+    top: 10px; /* Adjust the vertical spacing */
+    left: 10px; /* Adjust the horizontal spacing */
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    text-transform: capitalize;
+    gap: 6px;
+    z-index: 10; /* Ensure it appears above other elements */
+}
+
+/* Community Trusted Badge */
+.badge.community-trusted {
+    background-color: #28a745; /* Green */
+}
+
+/* Debunked Badge */
+.badge.debunked {
+    background-color: #dc3545; /* Red */
+}
+
+/* Most Controversial Badge */
+.badge.most-controversial {
+    background-color: #ffc107; /* Yellow */
+    color: black; /* Adjust text color for better contrast */
+}
+
+/* Adjust post content to not overlap with the badge */
+.post p {
+    margin-top: 30px; /* Add space so the badge doesn't overlap with the text */
+}
+
+
+
+/* ************************************************************ Overall container for the explanation ************************************** */
+.explanation {
+    font-family: Arial, sans-serif;
+    margin: 5px;
+    padding: 5px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title for the explanation */
+.explanation h3 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Styling for each evidence item */
+.explanation p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Numbered evidence */
+.explanation p strong {
+    color: #8A1626    ;
+    font-weight: bold;
+}
+
+/* Class for the support label */
+.explanation .support-label {
+    display: inline-block;
+    padding: 4px 8px;
+    font-weight: bold;
+    background-color: white;
+    color: #388e3c;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+/* Additional background colors for support, contradict, and unrelated labels */
+.explanation .support-label.support {
+    background-color: white;
+    color: #155724;
+}
+
+.explanation .support-label.contradict {
+    background-color: white;
+    color: #721c24;
+}
+
+.explanation .support-label.unrelated {
+    background-color: white;
+    color: #856404;
+}
+
+/* Link styling */
+.explanation a {
+    color: #8A1626;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.explanation a:hover {
+    text-decoration: underline;
+}
+
+/* Container to highlight each evidence */
+.evidence-item {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.evidence-item p {
+    margin: 0;
+}
+
+/* Headline style for title of evidence */
+.evidence-item .evidence-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Style for rationale */
+.evidence-item .evidence-rationale {
+    font-style: italic;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* Style for 'Read More' link */
+.evidence-item .read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: white;
+    font-size: 14px;
+    background-color: #8A1626;
+}
+
+.evidence-item .read-more:hover {
+    text-decoration: underline;
+}
+
+
+/* **************************************************************** Style for 3rd part **************************************************************************** */
+/* Section Styling */
+#learning-section {
+    font-family: 'Lato', sans-serif;
+    margin: 10px auto;
+    max-width: 900px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Carousel container styling */
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Arrow buttons */
+.carousel-arrow {
+    font-size: 30px;
+    color: black;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-arrow:hover {
+    color: #8A1626;
+    transform: translateY(-50%) scale(1.2);
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+
+/* Fact-check Card Styling */
+.fact-check {
+    background-color: #fff;
+    border-radius: 12px;
+    margin: 0 10px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    width: 100%;
+    max-width: 600px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Fact-check Content (Claim, Verdict, etc.) */
+.fact-check-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
+
+.claim {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2d3a3b;
+    line-height: 1.6;
+}
+
+.verdict {
+    font-size: 16px;
+    color: #8A1626; /* Gentle gold color */
+    font-weight: 500;
+}
+
+.published {
+    font-size: 14px;
+    color: #7a7a7a;  /* Lighter gray */
+}
+
+/* Next Button Styling */
+.read-more {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #8A1626;
+    border-radius: 5px;
+    align-self: flex-start;
+    max-width: fit-content;
+}
+
+.read-more:hover {
+    background-color: #8A1626;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Section Header Styling */
+#learning-section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: black; /* Darker shade for the header */
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/* Section Description Styling */
+#learning-section p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #7a7a7a;  /* Lighter gray for the description */
+    text-align: center;
+    margin-bottom: 10px;  /* Add space between the description and carousel */
+}
+
+/* Carousel container and buttons positioning */
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 10px; /* Space between header/description and carousel */
+}
+
+/* Arrow buttons styling */
+.carousel-arrow {
+    font-size: 30px;
+    color: #8A1626;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-arrow:hover {
+    color: #8A1626;
+    transform: translateY(-50%) scale(1.2);
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
